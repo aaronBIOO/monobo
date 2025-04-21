@@ -38,7 +38,7 @@ function App() {
       const data = await response.json();
 
       if (data.Response === 'False') {
-        setErrorMessage(data.Error || 'Failed to fetch mvies');
+        setErrorMessage(data.Error || 'Failed to fetch movies');
         setMovieList([]);
         
         return;
@@ -46,8 +46,8 @@ function App() {
 
       setMovieList(data.results || []);
     } catch (error) {
-      console.error(`Error fetching movies: ${error}`);
-      setErrorMessage('Error fetching movies. Please try again later.');
+      console.error(`Error: fetching movies interrupted: ${error}`);
+      setErrorMessage('Error: fetching movies interrupted. Please try again later.');
     } finally {
       setIsLoading(false);
     }
