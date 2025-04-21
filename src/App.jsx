@@ -46,8 +46,8 @@ function App() {
 
       setMovieList(data.results || []);
     } catch (error) {
-      console.error(`Error: fetching movies interrupted: ${error}`);
-      setErrorMessage('Error: fetching movies interrupted. Please try again later.');
+      console.error(`Error: fetching movies was interrupted: ${error}`);
+      setErrorMessage('Error: fetching movies was interrupted. Please try again later.');
     } finally {
       setIsLoading(false);
     }
