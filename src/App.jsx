@@ -53,6 +53,7 @@ function App() {
     }
   }
 
+    // Calling fetchMovies function to fetch movies
   useEffect(() => {
     fetchMovies();
   }, []);
