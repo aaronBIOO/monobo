@@ -3,6 +3,7 @@ import Search from "./components/Search";
 import Spinner from "./components/Spinner";
 import MovieCard from "./components/MovieCard";
 import { useDebounce } from 'use-debounce';
+import { updateSearchCount } from "./appwrite.js";
 
 
 // API setup initialized
@@ -22,7 +23,7 @@ function App() {
   const [errorMessage, setErrorMessage] = useState('');
   const [movieList, setMovieList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [debouncedSearchTerm] = useDebounce(searchTerm, 500);
+  const [debouncedSearchTerm] = useDebounce(searchTerm, 600);
 
 
   const fetchMovies = async (query = "") => {
@@ -57,6 +58,11 @@ function App() {
       }
       */
 
+      /* setMovieList(data.results || []); */
+
+      if (query && data.results.length > 0) {
+        await updateSearchCount(query, data.results[0]);
+      }
       setMovieList(data.results || []);
     } catch (error) {
       console.error(`Error: fetching movies was interrupted: ${error}`);
