@@ -107,7 +107,7 @@ function App() {
 
         {trendingMovies.length > 0 && (
             <section className="trending">
-              <h2>Trending Movies</h2>
+              <h2>Trending Movies on Monobo</h2>
 
               <ul>
                 {trendingMovies.map((movie, index) => (
@@ -122,7 +122,7 @@ function App() {
 
           
         <section className="all-movies">
-          <h2>All Movies</h2>
+          <h2>Current Popular Movies</h2>
           
           {/* Handling loading from API calls and potential error from calls */}
           {isLoading ? (
