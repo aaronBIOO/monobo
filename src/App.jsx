@@ -23,7 +23,7 @@ function App() {
   const [errorMessage, setErrorMessage] = useState('');
   const [movieList, setMovieList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [debouncedSearchTerm] = useDebounce(searchTerm, 600);
+  const [debouncedSearchTerm] = useDebounce(searchTerm, 500);
 
 
   const fetchMovies = async (query = "") => {
@@ -60,6 +60,7 @@ function App() {
 
       /* setMovieList(data.results || []); */
 
+      // Updating search count
       if (query && data.results.length > 0) {
         await updateSearchCount(query, data.results[0]);
       }
