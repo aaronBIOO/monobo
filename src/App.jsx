@@ -6,7 +6,7 @@ import { useDebounce } from 'use-debounce';
 import { updateSearchCount, getTrendingMovies } from "./appwrite.js";
 
 
-// API setup initialized
+// API setup 
 const API_BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const API_OPTIONS = {
@@ -29,12 +29,13 @@ function App() {
   const [debouncedSearchTerm] = useDebounce(searchTerm, 500);
 
 
+  // Fetching Movies from API
   const fetchMovies = async (query = "") => {
     setIsLoading(true);
     setErrorMessage('');
     setMovieList([]);
 
-    // Setting up API and making API communication functional
+    // Setting up API and making API communication
     try {
       const endpoint = query 
       ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}`
@@ -76,7 +77,7 @@ function App() {
   }
 
 
-  // Calling fetchMovies and loadTrendingMovies functions
+  // Fetching searched movies, loading trending movies
   useEffect(() => {
     fetchMovies(debouncedSearchTerm);
   }, [debouncedSearchTerm]);
