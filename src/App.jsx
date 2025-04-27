@@ -35,7 +35,7 @@ function App() {
     setErrorMessage('');
     setMovieList([]);
 
-    // Setting up API and making API communication
+    // Making API call | Storing network 'Response' into the variable 'response'
     try {
       const endpoint = query 
       ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}`
@@ -43,7 +43,7 @@ function App() {
       
       const response = await fetch(endpoint, API_OPTIONS);
 
-      // Error handling of API calls
+      // Error handling of API calls | Converting response to JavaScript object
       if (!response.ok) {
         console.error(`API Error: ${response.status} ${response.statusText}`);
         throw new Error('failed to fetch movies');
@@ -51,7 +51,7 @@ function App() {
       
       const data = await response.json();
   
-      // Updating search count
+      // Recording and updating number and type of queries ( movies )
       if (query && data.results.length > 0) {
         await updateSearchCount(query, data.results[0]);
       }
