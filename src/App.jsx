@@ -56,6 +56,7 @@ function App() {
         await updateSearchCount(query, data.results[0]);
       }
       setMovieList(data.results || []);
+      
     } catch (error) {
       console.error(`Error: fetching movies was interrupted: ${error}`);
       setErrorMessage('Error: fetching movies was interrupted. Please try again later.');
@@ -69,8 +70,8 @@ function App() {
   const loadTrendingMovies = async () => {
     try {
       const movies = await getTrendingMovies();
-
       setTrendingMovies(movies);
+
     } catch (error) {
       console.error(`Error fetching trending movies: ${error}`);
     }
